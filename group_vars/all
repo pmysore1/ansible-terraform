@@ -1,4 +1,5 @@
-terraform_working_dir: "{{ lookup('env','PWD') }}/projects/ansible-terraform/ec2"
+#terraform_working_dir: "{{ lookup('env','PWD') }}/projects/ansible-terraform/ec2"
+terraform_working_dir: ec2
 TFSTATES_S3_BUCKET: "{{ lookup('env','TFSTATES_S3_BUCKET') }}"
 TFSTATES_S3_KEY: "{{ lookup('env','TFSTATES_S3_KEY') }}"
 TFSTATES_S3_REGION: "{{ lookup('env','TFSTATES_S3_REGION') }}"
