@@ -1,9 +1,10 @@
 ---
 - name: Yum Install Packages
-  yum: name={{item}} state=latest
-  with_items:
-  - wget
-
+  yum: 
+   name: 
+      - wget
+   state: present
+  
 - name: terraform install
   unarchive:
     src: "{{TERRAFORM_DOWNLOAD_PATH}}"
