@@ -15,7 +15,7 @@
 - name: clone Terraform Git repository
   git:
    repo: "{{ GIT_URL }}"
-   dest: "{{ TMP_DIR }}"
+   dest: "{{ TMP_DIR }}/ansible-terraform"
 
 
 - name: Run Terraform
