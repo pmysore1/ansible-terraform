@@ -9,7 +9,8 @@
     src: "{{TERRAFORM_DOWNLOAD_PATH}}"
     dest: /usr/sbin
     remote_src: True
-
+    creates: /usr/sbin/terraform
+    
 #- name: Clone terraform project
 #  command: git clone {{ GIT_URL }} chdir="{{ TMP_DIR }}" 
 - name: clone Terraform Git repository

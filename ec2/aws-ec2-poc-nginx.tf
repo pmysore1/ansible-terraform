@@ -122,7 +122,7 @@ data "template_file" "install-ec2-nginx-userdata" {
 
 
 resource "aws_lb" "load-balancer" {
-  name               = "${var.name-prefix}-load-balancer"
+  name               = "${var.name-prefix}-nginx-load-balancer"
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.alb-remote-access.id}","${aws_security_group.ec2-nginx-sg.id}"]
@@ -139,7 +139,7 @@ resource "aws_lb" "load-balancer" {
 }
 
 resource "aws_lb_target_group" "ec2-http" {
-  name     = "${var.name-prefix}-alb-http"
+  name     = "${var.name-prefix}-nginx-alb-http"
   port     = 80
   protocol = "HTTP"
   target_type = "instance"
@@ -158,7 +158,7 @@ resource "aws_lb_listener" "lb-listener" {
 
 
 resource "aws_lb_target_group" "ec2-https" {
-  name     = "${var.name-prefix}-alb-https"
+  name     = "${var.name-prefix}-nginx-alb-https"
   port     = 433
   protocol = "HTTPS"
   target_type = "instance"
