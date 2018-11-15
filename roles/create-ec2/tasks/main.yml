@@ -1,6 +1,5 @@
 ---
 - name: Run Terraform
-  #command: terraform init -backend-config="bucket=poc-cog-tfstate" -backend-config="key=ec2/ec2.tfstate" -backend-config="region=us-gov-west-1" -backend-config="profile=cognosante" chdir="{{ terraform_working_dir }}" 
   command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ terraform_working_dir }}"
 
 - name: Terraform Plan command
