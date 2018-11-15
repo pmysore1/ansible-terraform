@@ -21,7 +21,7 @@
 
 - name: plan
   terraform:
-   project_path: "{{ TMP_DIR }}"/"{{ terraform_working_dir }}"
+   project_path: "{{ terraform_working_dir }}"
    plan_file: "{{ terraform_working_dir }}/tfplan"
    lock: true
    state: planned
