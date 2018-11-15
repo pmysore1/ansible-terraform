@@ -20,20 +20,13 @@
    force: yes
 
 
-#- name: Run Terraform
-#  command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ terraform_working_dir }}"
+-name: Run Terraform init
+ command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ terraform_working_dir }}"
 
-#- name: Terraform Plan command
-#  command: terraform plan chdir="{{terraform_working_dir }}"
+-name: Terraform command "{{ terraform_state }}"
+ command: terraform {{ terraform_state }} --auto-approve chdir="{{terraform_working_dir }}"
+ when: {{ terraform_state }} == "plan"
 
-- name: plan
-  terraform:
-   project_path: "{{ terraform_working_dir }}"
-   #plan_file: "{{ terraform_working_dir }}/tfplan"
-   force_init: true
-   lock: true
-   state: "{{ terraform_state }}"
-   backend_config:
-      region: "{{ TFSTATES_S3_REGION }}"
-      bucket: "{{TFSTATES_S3_BUCKET }}"
-      key: "{{ TFSTATES_S3_KEY }}"
+-name: Terraform command "{{ terraform_state }}"
+ command: terraform {{ terraform_state }} --auto-approve chdir="{{terraform_working_dir }}"
+ when: {{ terraform_state }} == "apply" || "destroy"

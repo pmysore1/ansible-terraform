@@ -1,0 +1,39 @@
+---
+- name: Yum Install Packages
+  yum: name={{item}} state=latest
+  with_items:
+  - wget
+
+- name: terraform install
+  unarchive:
+    src: "{{TERRAFORM_DOWNLOAD_PATH}}"
+    dest: /usr/sbin
+    remote_src: True
+    creates: /usr/sbin/terraform
+
+#- name: Clone terraform project
+#  command: git clone {{ GIT_URL }} chdir="{{ TMP_DIR }}" 
+- name: clone Terraform Git repository
+  git:
+   repo: "{{ GIT_URL }}"
+   dest: "{{ TMP_DIR }}/ansible-terraform"
+   force: yes
+
+
+#- name: Run Terraform
+#  command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ terraform_working_dir }}"
+
+#- name: Terraform Plan command
+#  command: terraform plan chdir="{{terraform_working_dir }}"
+
+- name: plan
+  terraform:
+   project_path: "{{ terraform_working_dir }}"
+   #plan_file: "{{ terraform_working_dir }}/tfplan"
+   force_init: true
+   lock: true
+   state: "{{ terraform_state }}"
+   backend_config:
+      region: "{{ TFSTATES_S3_REGION }}"
+      bucket: "{{TFSTATES_S3_BUCKET }}"
+      key: "{{ TFSTATES_S3_KEY }}"
