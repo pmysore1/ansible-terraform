@@ -16,6 +16,7 @@
   git:
    repo: "{{ GIT_URL }}"
    dest: "{{ TMP_DIR }}/ansible-terraform"
+   force: yes
 
 
 - name: Run Terraform
