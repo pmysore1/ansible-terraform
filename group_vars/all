@@ -1,7 +1,7 @@
 #terraform_working_dir: "{{ lookup('env','PWD') }}/projects/ansible-terraform/ec2"
 terraform_working_dir: /var/lib/awx/projects/_11__create_ec2_instances_using_terraform/ec2
 git_url: "{{ lookup('env','GIT_URL') }}"
-tmp_dir: "{{ lookup('env','TMP_DIR') }}"
+TMP_DIR: "{{ lookup('env','TMP_DIR') }}"
 TFSTATES_S3_BUCKET: "{{ lookup('env','TFSTATES_S3_BUCKET') }}"
 TFSTATES_S3_KEY: "{{ lookup('env','TFSTATES_S3_KEY') }}"
 TFSTATES_S3_REGION: "{{ lookup('env','TFSTATES_S3_REGION') }}"
