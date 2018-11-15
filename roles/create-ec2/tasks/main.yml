@@ -13,9 +13,9 @@
 #- name: Clone terraform project
 #  command: git clone {{ GIT_URL }} chdir="{{ TMP_DIR }}" 
 - name: clone Terraform Git repository
-    git:
-      repo: "{{ GIT_URL }}"
-      dest: "{{ TMP_DIR }}"
+  git:
+   repo: "{{ GIT_URL }}"
+   dest: "{{ TMP_DIR }}"
 
 
 - name: Run Terraform
