@@ -43,36 +43,36 @@ data "template_file" "install-ec2-ansible-controller-userdata" {
 
 "resource" "aws_iam_instance_profile" "ec2-ansible-controller-instance-profile" {
   "role" = "${aws_iam_role.ec2-ansible-controller-role.name}"
-  "name" = "${var.name-prefix}-ec2-ansible-controller-instance-profile"
+  "name" = "${var.name-prefix}-ec2-anscontroller-instance-profile"
 }
 
 "resource" "aws_iam_policy_attachment" "ec2-ansible-controller-policy-attach" {
   "policy_arn" = "${aws_iam_policy.ec2-ansible-controller-policy.arn}"
   "roles" = ["${aws_iam_role.ec2-ansible-controller-role.name}"]
-  "name" = "${var.name-prefix}-ec2-ansible-controller-policy-attach"
+  "name" = "${var.name-prefix}-ec2-anscontroller-policy-attach"
 }
 
 "resource" "aws_iam_policy_attachment" "ec2-ansible-describe-policy-attach" {
   "policy_arn" = "${aws_iam_policy.ansible-describe-policy.arn}"
   "roles" = ["${aws_iam_role.ec2-ansible-controller-role.name}"]
-  "name" = "${var.name-prefix}-ec2-ansible-describe-policy-attach"
+  "name" = "${var.name-prefix}-ec2-anscontroller-describe-policy-attach"
 }
 
 
 "resource" "aws_iam_policy" "ec2-ansible-controller-policy" {
   "path" = "/"
-  "name" = "${var.name-prefix}-ec2-ansible-controller-policy"
+  "name" = "${var.name-prefix}-ec2-anscontroller-policy"
   "policy" = "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"s3:GetObject\",\n            \"Resource\": \"arn:aws-us-gov:s3:::poc-cog-tfstate/auth/poc-anisble-tower-cognosante.pem\"\n        }\n    ]\n}"
 }
 "resource" "aws_iam_policy" "ansible-describe-policy" {
   "path" = "/"
-  "name" = "${var.name-prefix}-ansible-describe-policy"
+  "name" = "${var.name-prefix}-anscontroller-policy"
   "policy" = "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"ec2:Describe*\",\n            \"Resource\": \"*\"\n        }\n    ]\n}"
 }
 
 
 "resource" "aws_iam_role" "ec2-ansible-controller-role" {
-  "name" = "${var.name-prefix}-ec2-ansible-controller-role"
+  "name" = "${var.name-prefix}-ec2-anscontroller-role"
   "assume_role_policy" = "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": \"ec2.amazonaws.com\"\n      },\n      \"Action\": \"sts:AssumeRole\"\n    }\n  ]\n}"
 }
 
