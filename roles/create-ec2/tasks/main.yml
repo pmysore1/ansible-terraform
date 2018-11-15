@@ -16,7 +16,6 @@
   git:
    repo: "{{ GIT_URL }}"
    dest: "{{ TMP_DIR }}"
-   clone: yes
 
 
 - name: Run Terraform
