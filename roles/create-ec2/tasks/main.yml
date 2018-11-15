@@ -33,3 +33,7 @@
    force_init: true
    lock: true
    state: "{{ terraform_state }}"
+   backend_config:
+      region: "{{ TFSTATES_S3_REGION }}"
+      bucket: "{{TFSTATES_S3_BUCKET }}"
+      key: "{{ TFSTATES_S3_KEY }}"
