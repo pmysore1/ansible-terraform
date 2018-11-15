@@ -122,7 +122,7 @@ data "template_file" "install-ec2-nginx-userdata" {
 
 
 resource "aws_lb" "load-balancer" {
-  name               = "${var.name-prefix}-nginx-load-balancer"
+  name               = "${var.name-prefix}-nginx-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.alb-remote-access.id}","${aws_security_group.ec2-nginx-sg.id}"]
