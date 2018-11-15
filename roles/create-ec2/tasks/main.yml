@@ -14,7 +14,7 @@
   command: git clone {{ GIT_URL }} chdir="{{ TMP_DIR }}" 
 
 - name: Run Terraform
-  command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ TMP_DIR }}"/"{{ terraform_working_dir }}"
+  command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ terraform_working_dir }}"
 
 - name: Terraform Plan command
   command: terraform plan chdir="{{terraform_working_dir }}"
@@ -22,6 +22,6 @@
 - name: plan
   terraform:
    project_path: "{{ TMP_DIR }}"/"{{ terraform_working_dir }}"
-   plan_file: "{{ TMP_DIR }}"/"{{ terraform_working_dir }}/tfplan"
+   plan_file: "{{ terraform_working_dir }}/tfplan"
    lock: true
    state: planned
