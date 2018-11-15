@@ -32,4 +32,4 @@
    #plan_file: "{{ terraform_working_dir }}/tfplan"
    force_init: true
    lock: true
-   state: {{ terraform_state }}
+   state: "{{ terraform_state }}"
