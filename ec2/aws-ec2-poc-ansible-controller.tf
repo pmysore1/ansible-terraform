@@ -80,7 +80,7 @@ data "template_file" "install-ec2-ansible-controller-userdata" {
 "resource" "aws_instance" "ec2-ansible-controller-az1" {
   "count" = 1
   "key_name" = "${var.vpc_keypair}"
-  "iam_instance_profile" = "${var.name-prefix}-ec2-ansible-controller-instance-profile"
+  "iam_instance_profile" = "${var.name-prefix}-ec2-anscontroller-instance-profile"
   "vpc_security_group_ids" = ["${aws_security_group.ec2-ansible-controller-sg.id}", "${data.terraform_remote_state.vpc.ssh_remote_access_sg}"]
   "instance_initiated_shutdown_behavior" = "stop"
   "subnet_id" = "${element(data.terraform_remote_state.vpc.private_subnet_ids, 0)}"
@@ -111,7 +111,7 @@ data "template_file" "install-ec2-ansible-controller-userdata" {
 "resource" "aws_instance" "ec2-ansible-controller-az2" {
   "count" = 1
   "key_name" = "${var.vpc_keypair}"
-  "iam_instance_profile" = "${var.name-prefix}-ec2-ansible-controller-instance-profile"
+  "iam_instance_profile" = "${var.name-prefix}-ec2-anscontroller-instance-profile"
   "vpc_security_group_ids" = ["${aws_security_group.ec2-ansible-controller-sg.id}", "${data.terraform_remote_state.vpc.ssh_remote_access_sg}"]
   "instance_initiated_shutdown_behavior" = "stop"
   "subnet_id" = "${element(data.terraform_remote_state.vpc.private_subnet_ids, 1)}"
