@@ -13,9 +13,9 @@ data "terraform_remote_state" "vpc" {
     key        = "${var.terraform-remote-state-vpc-key}"
     region     = "${data.aws_region.current.id}"
     profile    = "${var.aws_profile}"
-    encrypt = true
+    encrypt    = true
   }
 }
 
-#terraform init -backend-config="bucket=poc-cog-tfstate" -backend-config="key=ec2/ec2.tfstate" -backend-config="region=us-gov-west-1" -backend-config="profile=cognosante"
+#terraform init -backend-config="bucket=poc-cog-tfstate" -backend-config="key=infra/infra.tfstate" -backend-config="region=us-gov-west-1" -backend-config="profile=cognosante"
 

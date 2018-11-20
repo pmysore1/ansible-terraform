@@ -2,4 +2,4 @@
 
 - hosts: local
   roles:
-   - create-ec2
+   - create-infra

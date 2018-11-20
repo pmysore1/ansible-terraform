@@ -1,17 +1,8 @@
-"variable" "remote-state-bucket_name" {
-  "type" = "string"
-  #"default" = "terraform-poc-state"
-  "default" = "poc-cog-tfstate"
-}
-"variable" "terraform-remote-state-vpc-key" {
-  "type" = "string"
-  "default" = "vpc/vpc.tfstate"
-}
-
-"variable" "environment" {
-  "type" = "string"
-  "default" = "POC"
-}
+"variable" "remote-state-bucket_name" {}
+"variable" "terraform-remote-state-vpc-key" {}
+"variable" "aws_region" {}
+"variable" "aws_profile" {}
+"variable" "environment" {}
 
 "variable" "public-az3-cidr" {
   "type" = "string"
@@ -33,23 +24,13 @@
   "type" = "string"
   "default" = "10.0.9.0/24"
 }
-"variable" "name-prefix" {
-  "type" = "string"
-  #"default" = "capgemini-gs-poc"
-  "default" = "cognosante-poc"
-}
+"variable" "name-prefix" {}
+
 "variable" "public-az1-cidr" {
   "type" = "string"
   "default" = "10.0.0.0/24"
 }
-"variable" "aws_region" {
-  "type" = "string"
-  "default" = "us-gov-west-1"
-}
-"variable" "aws_profile" {
-  "type" = "string"
-  "default" = "cognosante"
-}
+
 "variable" "private-az1-cidr" {
   "type" = "string"
   "default" = "10.0.4.0/24"
@@ -101,11 +82,7 @@ variable "tags" {
   description = "Additional tags (e.g. map(`Cluster`,`XYZ`)"
 }
 
-variable "creater" {
-  type        = "string"
-  default     = "pradeep.mysore"
-  description = "Additional tags (e.g. map(`Cluster`,`XYZ`)"
-}
+variable "creater" {}
 
 variable "required_igw" {
   default     = 1
@@ -154,30 +131,21 @@ variable "vpn_remote_cidr_block" {
   default = "173.67.205.219/32,66.102.238.226/32"
 }
 
-variable "vpc_keypair" {
-  #default = "capgemini-gs-poc-keypair"
-  default = "poc-anisble-tower"
-}
+variable "vpc_keypair" {}
 
 # Base AMI to use for hardened RHEL7 instances
 variable "baseos_rhel7_ami_id" {
   default = "ami-906cf0f1"
 }
 
-variable "baseos_ec2_ami_id" {
-  default = "ami-906cf0f1"
-  #default = "ami-77199016"
-}
+variable "baseos_ec2_ami_id" {}
+  
+variable "ec2_instance_type" {}
 
-variable "ec2_instance_type" {
-  default = "t2.micro"
-}
 variable "s3_pem_file_path" {
   default = "s3://poc-cog-tfstate/auth"
 }
 variable "s3_pem_file_name" {
   default = "poc-anisble-tower-cognosante.pem"
 }
-variable "aws_ec2_user" {
-  default = "ec2-user"
-}
+variable "aws_ec2_user" {}
