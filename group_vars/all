@@ -5,16 +5,16 @@ terraform_state: "{{ lookup('env','terraform_state') }}"
 TFSTATES_S3_BUCKET: "{{ lookup('env','TFSTATES_S3_BUCKET') }}"
 TFSTATES_S3_KEY: "{{ lookup('env','TFSTATES_S3_KEY') }}"
 TFSTATES_S3_REGION: "{{ lookup('env','TFSTATES_S3_REGION') }}"
-terraform_working_dir: "{{ TMP_DIR }}/ansible-terraform/infra"
+terraform_working_dir: "{{ TMP_DIR }}/ansible_terraform/infra"
 
-remote-state-bucket_name: "{{TFSTATES_S3_BUCKET}}"
-terraform-remote-state-vpc-key: "{{ lookup('env','terraform-remote-state-vpc-key') }}"
+remote_state_bucket_name: "{{TFSTATES_S3_BUCKET}}"
+terraform_remote_state_vpc_key: "{{ lookup('env','terraform_remote_state_vpc_key') }}"
 aws_region: "{{TFSTATES_S3_REGION}}"
 aws_profile: "{{ lookup('env','aws_profile') }}"
 
-# Following values are used in tagging aws-resources
+# Following values are used in tagging aws_resources
 environment: "{{ lookup('env','environment') }}"
-name-prefix: "{{ lookup('env','name-prefix') }}"
+name_prefix: "{{ lookup('env','name_prefix') }}"
 creater: "{{ lookup('env','creator') }}"
 
 remote_cidr_block: "{{ lookup('env','remote_cidr_block') }}"

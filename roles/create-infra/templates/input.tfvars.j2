@@ -1,11 +1,11 @@
-remote-state-bucket_name = {{ remote-state-bucket_name }}
-terraform-remote-state-vpc-key = "{{ terraform-remote-state-vpc-key }}"
+remote_state_bucket_name = {{ remote_state_bucket_name }}
+terraform_remote_state_vpc_key = "{{ terraform_remote_state_vpc_key }}"
 aws_region = "{ {aws_region }"
 aws_profile = "{{ aws_profile }}"
 
-# Following values are used in tagging aws-resources
+# Following values are used in tagging aws_resources
 environment         = "{{ environment }}"
-name-prefix         = "{{ name-prefix }}"
+name_prefix         = "{{ name_prefix }}"
 creater             = "{{ creater }}"
 
 vpc_cidr_block      = "{{ vpc_cidr_block }}"
