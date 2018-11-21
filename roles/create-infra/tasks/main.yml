@@ -25,7 +25,7 @@
 - name: Copy input.tfvars to terraform working directory
   template:
     src: input.tfvars
-    dest: "{{terraform_working_dir}}\input.tfvars"
+    dest: "{{ terraform_working_dir }}\input.tfvars"
     mode: "0755"
 
 
