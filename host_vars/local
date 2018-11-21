@@ -1,0 +1,27 @@
+TERRAFORM_DOWNLOAD_PATH: "{{ lookup('env','TERRAFORM_DOWNLOAD_PATH') }}"
+GIT_URL: "{{ lookup('env','GIT_URL') }}"
+TMP_DIR: "{{ lookup('env','TMP_DIR') }}"
+terraform_state: "{{ lookup('env','terraform_state') }}"
+TFSTATES_S3_BUCKET: "{{ lookup('env','TFSTATES_S3_BUCKET') }}"
+TFSTATES_S3_KEY: "{{ lookup('env','TFSTATES_S3_KEY') }}"
+TFSTATES_S3_REGION: "{{ lookup('env','TFSTATES_S3_REGION') }}"
+terraform_working_dir: "{{ TMP_DIR }}/ansible-terraform/infra"
+
+remote-state-bucket_name: "{{TFSTATES_S3_BUCKET}}"
+terraform-remote-state-vpc-key: "{{ lookup('env','terraform-remote-state-vpc-key') }}"
+aws_region: "{{TFSTATES_S3_REGION}}"
+aws_profile: "{{ lookup('env','aws_profile') }}"
+
+# Following values are used in tagging aws-resources
+environment: "{{ lookup('env','environment') }}"
+name-prefix: "{{ lookup('env','name-prefix') }}"
+creater: "{{ lookup('env','creator') }}"
+
+remote_cidr_block: "{{ lookup('env','remote_cidr_block') }}"
+vpc_keypair: "{{ lookup('env','vpc_keypair') }}"
+baseos_ec2_ami_id: "{{ lookup('env','baseos_ec2_ami_id') }}"
+ec2_instance_type: "{{ lookup('env','ec2_instance_type') }}"
+aws_ec2_user: "{{ lookup('env','aws_ec2_user') }}"
+s3_pem_file_path: "{{ lookup('env','s3_pem_file_path') }}"
+s3_pem_file_name: "{{ lookup('env','s3_pem_file_name') }}"
+remote_cidr_block: "{{ lookup('env','remote_cidr_block') }}"
