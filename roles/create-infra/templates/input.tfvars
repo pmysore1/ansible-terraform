@@ -1,4 +1,4 @@
-remote-state-bucket_name = "{{ remote-state-bucket_name }}"
+remote-state-bucket_name = {{ remote-state-bucket_name }}
 terraform-remote-state-vpc-key = "{{ terraform-remote-state-vpc-key }}"
 aws_region = "{ {aws_region }"
 aws_profile = "{{ aws_profile }}"
