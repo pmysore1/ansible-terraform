@@ -1,4 +1,4 @@
-variable "remote-state-bucket_name" {}
+variable "remote-state-bucket-name" {}
 variable "terraform-remote-state-vpc-key" {}
 variable "aws_region" {}
 variable "aws_profile" {}
