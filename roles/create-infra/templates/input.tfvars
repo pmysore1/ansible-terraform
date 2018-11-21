@@ -4,16 +4,15 @@ aws_region = "{{aws_region}}"
 aws_profile = "{{aws_profile}}"
 
 # Following values are used in tagging aws-resources
-environment         = "{environment}"
+environment         = "{{environment}}"
 name-prefix         = "{{name-prefix}}"
-creater             = "{{pradeep.mysore}}"
+creater             = "{{creater}}"
 
 vpc_cidr_block      = "{{vpc_cidr_block}}"
 vpc_keypair         = "{{vpc_keypair}}"
 baseos_ec2_ami_id   = "{{baseos_ec2_ami_id}}"
 ec2_instance_type   = "{{ec2_instance_type}}"
 aws_ec2_user        = "{{aws_ec2_user}}"
-ssh_remote_cidr_block = "{{ssh_remote_cidr_block}}"
 s3_pem_file_path        = "{{s3_pem_file_path}}"
 s3_pem_file_name        = "{{s3_pem_file_name}}"
 

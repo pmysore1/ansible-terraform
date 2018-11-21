@@ -20,14 +20,16 @@
    dest: "{{ TMP_DIR }}/ansible-terraform"
    force: yes
 
+- name: Copy nginx upstream configuration file
+  template: src=input dest="{{terraform_working_dir}}\input.tfvars" mode=0755
 
 - name: Run Terraform init
   command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ terraform_working_dir }}"
 
 - name: Terraform command "{{ terraform_state }}"
-  command: terraform "{{ terraform_state }}" chdir="{{terraform_working_dir }}"
+  command: terraform "{{ terraform_state }}" -var-file=input.tfvars chdir="{{terraform_working_dir }}"
   when: terraform_state == 'plan'
 
 - name: Terraform apply or destroy task; state passed - "{{ terraform_state }} "
-  command: terraform "{{ terraform_state }}" --auto-approve chdir="{{terraform_working_dir }}"
+  command: terraform "{{ terraform_state }}" -var-file=input.tfvars --auto-approve chdir="{{terraform_working_dir }}"
   when: ((terraform_state == 'apply') or  (terraform_state =='destroy'))
