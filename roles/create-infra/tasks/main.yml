@@ -1,6 +1,4 @@
 ---
-- hosts: all
-
 - name: Yum Install Packages
   yum: 
    name: 
