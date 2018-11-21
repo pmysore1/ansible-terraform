@@ -17,7 +17,7 @@ environment: "{{ lookup('env','environment') }}"
 name-prefix: "{{ lookup('env','name-prefix') }}"
 creater: "{{ lookup('env','creator') }}"
 
-vpc_cidr_block: "{{ lookup('env','vpc_cidr_block') }}"
+remote_cidr_block: "{{ lookup('env','remote_cidr_block') }}"
 vpc_keypair: "{{ lookup('env','vpc_keypair') }}"
 baseos_ec2_ami_id: "{{ lookup('env','baseos_ec2_ami_id') }}"
 ec2_instance_type: "{{ lookup('env','ec2_instance_type') }}"
