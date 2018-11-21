@@ -13,7 +13,7 @@ aws_region: "{{TFSTATES_S3_REGION}}"
 aws_profile: "{{ lookup('env','aws_profile') }}"
 
 # Following values are used in tagging aws_resources
-environment: "{{ lookup('env','environment') }}"
+Environment: "{{ lookup('env','Environment') }}"
 name_prefix: "{{ lookup('env','name_prefix') }}"
 creater: "{{ lookup('env','creator') }}"
 
