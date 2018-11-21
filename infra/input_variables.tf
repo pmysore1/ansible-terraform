@@ -105,3 +105,50 @@ variable "ec2_instance_type" {}
 
 variable "s3_pem_file_path" {}
 variable "s3_pem_file_name" {}
+
+# Below are RDS related variables
+variable "product" {
+  default = "POC"
+}
+
+variable "db_multi_az" {
+  default = "true"
+}
+
+variable "db_instance_class" {
+  default = "db.m3.large"
+}
+
+variable "db_engine_version" {
+  default = "5.6.27"
+}
+
+variable "db_size" {
+  default = "100"
+}
+
+variable "db_name" {
+  default = "rdscogpoc"
+}
+
+variable "db_username" {
+  default = "rdscogpoc"
+}
+
+variable "db_password" {}
+
+variable "db_snapshot_identifier" {
+  default = ""
+}
+
+variable "db_backup_window" {
+  default = "20:00-21:59"
+}
+
+variable "db_backup_retention_period" {
+  default = 30
+}
+
+variable "db_maintenance_window" {
+  default = "Sun:22:00-Mon:00:00"
+}
