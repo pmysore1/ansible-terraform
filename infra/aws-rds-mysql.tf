@@ -38,7 +38,7 @@
 
   "snapshot_identifier" = "${var.db_snapshot_identifier}"
 
-  "storage_encrypted" = true
+  "storage_encrypted" = false
 
   "tags" = {
     "Environment" = "${var.environment}"
