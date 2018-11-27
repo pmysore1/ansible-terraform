@@ -112,11 +112,11 @@ variable "product" {
 }
 
 variable "db_multi_az" {
-  default = "true"
+  default = "false"
 }
 
 variable "db_instance_class" {
-  default = "db.m3.large"
+  default = "db.m1.small"
 }
 
 variable "db_engine_version" {

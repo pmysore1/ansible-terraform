@@ -15,15 +15,13 @@ function die {
 sudo yum -y install git gettext docker nodejs npm gcc-c++ bzip2
 sudo pip install ansible
 sudo pip install docker-py boto3
+sudo yum -y install java-1.8.0-openjdk-devel.x86_64
+sudo yum -y remove java-1.7.0-openjdk
 
 
-su ${aws_ec2_user} -c 'cd ; sudo git clone https://github.com/pmysore1/ansible-nginxandtomcat.git; sudo chown -R ${aws_ec2_user} ~/ansible-nginxandtomcat;'
-
-export ANSIBLE_HOSTS=~/ansible-nginxandtomcat/aws_dyn_inventory/ec2.py
-export EC2_INI_PATH=~/ansible-nginxandtomcat/aws_dyn_inventory/ec2.ini
-export ANSIBLE_CONFIG=~/ansible-nginxandtomcat/ansible.cfg
-#ssh-agent bash
-#ssh-add ~/poc-anisble-tower-cognosante.pem
+su ${aws_ec2_user} -c 'cd ; sudo git clone https://github.com/pmysore1/ansible-jenkins.git; sudo chown -R ${aws_ec2_user} ~/ansible-jenkins;'
+su ${aws_ec2_user} -c 'cd ~/ansible-jenkins; /usr/local/bin/ansible-playbook -b --become-method=sudo -i hosts site.yml;'
+#cd
 
 su ${aws_ec2_user} -c 'aws s3 cp ${s3_pem_file_path}/${s3_pem_file_name} ~/ --sse --region us-gov-west-1;'
 su ${aws_ec2_user} -c 'cd sudo chown -R ${aws_ec2_user} ~/${s3_pem_file_name};'

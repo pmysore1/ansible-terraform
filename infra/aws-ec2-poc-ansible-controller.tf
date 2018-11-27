@@ -58,6 +58,24 @@ data "template_file" "install-ec2-ansible-controller-userdata" {
   "name" = "${var.name-prefix}-ec2-anscontroller-describe-policy-attach"
 }
 
+"resource" "aws_iam_policy_attachment" "rds-describe-policy-attach" {
+  "policy_arn" = "${aws_iam_policy.rds-describe-policy.arn}"
+  "roles" = ["${aws_iam_role.ec2-ansible-controller-role.name}"]
+  "name" = "${var.name-prefix}-rds-describe-policy-attach"
+}
+
+"resource" "aws_iam_policy_attachment" "rds-describedb-policy-attach" {
+  "policy_arn" = "${aws_iam_policy.rds-describedb-policy.arn}"
+  "roles" = ["${aws_iam_role.ec2-ansible-controller-role.name}"]
+  "name" = "${var.name-prefix}-rds-describedb-policy-attach"
+}
+
+"resource" "aws_iam_policy_attachment" "rds-list-policy-attach" {
+  "policy_arn" = "${aws_iam_policy.rds-list-policy.arn}"
+  "roles" = ["${aws_iam_role.ec2-ansible-controller-role.name}"]
+  "name" = "${var.name-prefix}-rds-list-policy-attach"
+}
+
 
 "resource" "aws_iam_policy" "ec2-ansible-controller-policy" {
   "path" = "/"
@@ -70,6 +88,22 @@ data "template_file" "install-ec2-ansible-controller-userdata" {
   "policy" = "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"ec2:Describe*\",\n            \"Resource\": \"*\"\n        }\n    ]\n}"
 }
 
+"resource" "aws_iam_policy" "rds-describe-policy" {
+  "path" = "/"
+  "name" = "${var.name-prefix}-rds-anscontroller-policy"
+  "policy" = "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"rds:Describe*\",\n            \"Resource\": \"*\"\n        }\n    ]\n}"
+}
+
+"resource" "aws_iam_policy" "rds-list-policy" {
+  "path" = "/"
+  "name" = "${var.name-prefix}-rds-list-policy"
+  "policy" = "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"rds:ListTagsForResource*\",\n            \"Resource\": \"*\"\n        }\n    ]\n}"
+}
+"resource" "aws_iam_policy" "rds-describedb-policy" {
+  "path" = "/"
+  "name" = "${var.name-prefix}-rds-describedb-policy"
+  "policy" = "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"rds:DescribeDBInstances*\",\n            \"Resource\": \"*\"\n        }\n    ]\n}"
+}
 
 "resource" "aws_iam_role" "ec2-ansible-controller-role" {
   "name" = "${var.name-prefix}-ec2-anscontroller-role"

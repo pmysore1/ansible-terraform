@@ -22,12 +22,6 @@
 
 - name: Copy input.tfvars to terraform working directory
   template: src=input.tfvars.j2 dest="{{terraform_working_dir}}/input.tfvars" mode=0755
-#- name: Copy input.tfvars to terraform working directory
- # template:
-  #  src: input.tfvars
-   # dest: {{ terraform_working_dir }}\input.tfvars
-    #mode: "0755"
-
 
 - name: Run Terraform init
   command: terraform init -backend-config="bucket={{TFSTATES_S3_BUCKET }}" -backend-config="key={{ TFSTATES_S3_KEY }}" -backend-config="region={{ TFSTATES_S3_REGION }}" chdir="{{ terraform_working_dir }}"

@@ -48,8 +48,8 @@
     "Name" = "${var.environment}-${var.name-prefix}-MySQL"
 
     "Product" = "${var.product}"
-
     Application        = "${var.name-prefix}"
+    Role                = "RDS"
   }
 
   "username" = "${var.db_username}"
